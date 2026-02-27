@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجانين التشات | غرفة المحادثة</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Supabase JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    
+    <!-- Background Animation Elements -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <main class="chat-container glass-effect">
+        
+        <!-- Header -->
+        <header class="chat-header glass-effect-inner">
+            <div class="logo">
+                <i class="fa-solid fa-bolt gradient-text"></i>
+                <h2>غرفة المحادثة العامة</h2>
+            </div>
+            <div class="user-info">
+                <span id="currentUsername">زائر مجهول</span>
+                <button id="editNameBtn" class="icon-btn" title="تغيير الاسم">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Messages Area -->
+        <div class="messages-area" id="messagesArea">
+            <!-- Messages will be injected here via JS -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <i class="fa-solid fa-spinner fa-spin"></i> جاري الاتصال...
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <footer class="chat-input-area glass-effect-inner">
+            
+            <button id="attachBtn" class="icon-btn attach-btn" title="إرفاق صورة">
+                <i class="fa-solid fa-image"></i>
+            </button>
+            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            
+            <div class="input-wrapper">
+                <textarea id="messageInput" placeholder="اكتب رسالتك هنا..." rows="1"></textarea>
+            </div>
+            
+            <button id="sendBtn" class="send-btn primary-gradient">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </footer>
+    </main>
+
+    <!-- Name Change Modal -->
+    <div id="nameModal" class="modal-overlay">
+        <div class="modal glass-effect">
+            <h3>من أنت؟</h3>
+            <p>أدخل اسماً للدردشة به:</p>
+            <input type="text" id="nameInputModal" placeholder="مثال: أسد الليل" maxlength="25">
+            <button id="saveNameBtn" class="primary-gradient">حفظ ودخول</button>
+        </div>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div id="imagePreviewModal" class="modal-overlay">
+        <div class="modal glass-effect">
+            <h3>تأكيد إرسال الصورة</h3>
+            <div class="img-preview-container">
+                <img id="previewImg" src="" alt="Preview">
+            </div>
+            <div class="modal-actions">
+                <button id="cancelImageBtn" class="secondary-btn">إلغاء</button>
+                <button id="confirmImageBtn" class="primary-gradient">
+                    <i class="fa-solid fa-upload"></i> إرسال الصورة
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Main Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
